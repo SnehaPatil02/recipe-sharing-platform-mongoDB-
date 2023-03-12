@@ -1,37 +1,22 @@
 package com.sample.model;
 
-import java.util.UUID;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "recipe")
+@Document("recipies")
 public class Recipe {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private UUID recipeId;
+	@Indexed(unique = true)
+	private String recipeId;
 	
-	@Column
 	private String recipeName;
-	
-	@Column
-	private UUID userId;
 
+	private String userId;
 	
-	public UUID getRecipeId() {
-		return recipeId;
-	}
-
-	public void setRecipeId(UUID recipeId) {
-		this.recipeId = recipeId;
-	}
+	
 
 	public String getRecipeName() {
 		return recipeName;
@@ -41,13 +26,31 @@ public class Recipe {
 		this.recipeName = recipeName;
 	}
 
-	public UUID getUserId() {
+	public String getRecipeId() {
+		return recipeId;
+	}
+
+	public void setRecipeId(String recipeId) {
+		this.recipeId = recipeId;
+	}
+
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(UUID userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
+	public Recipe(String recipeId, String recipeName, String userId) {
+		super();
+		this.recipeId = recipeId;
+		this.recipeName = recipeName;
+		this.userId = userId;
+	}
+
+	
+	
 
 	
 

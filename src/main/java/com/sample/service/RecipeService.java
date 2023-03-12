@@ -15,5 +15,5 @@ public interface RecipeService {
 	
 	public List<Recipe> getAllRecipe();
 	
-	public String deleteById(UUID recipeId);
+	public String deleteById(String recipeId);
 }

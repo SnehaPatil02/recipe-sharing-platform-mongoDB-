@@ -52,7 +52,7 @@ public class RecipeController {
 	}
 	
 	@DeleteMapping("/deleteRecipe/{recipeId}")
-	public String deleteById(@PathVariable UUID recipeId) {
+	public String deleteById(@PathVariable String recipeId) {
 		if(recipeService.deleteById(recipeId) != null) {
 			return "Deleted successfully";
 		}else {

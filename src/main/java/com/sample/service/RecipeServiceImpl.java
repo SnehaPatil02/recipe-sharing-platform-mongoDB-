@@ -39,7 +39,7 @@ public class RecipeServiceImpl implements RecipeService{
 
 
 	@Override
-	public String deleteById(UUID recipeId) {
+	public String deleteById(String recipeId) {
 		recipeRepository.deleteById(recipeId);
 		return "Recipe deleted successfully";
 	}
