@@ -13,6 +13,10 @@ public class Recipe {
 	private String recipeId;
 	
 	private String recipeName;
+	
+	private String ingridients;
+	
+	private String steps;
 
 	private String userId;
 	
@@ -42,12 +46,32 @@ public class Recipe {
 		this.userId = userId;
 	}
 
-	public Recipe(String recipeId, String recipeName, String userId) {
+	public String getIngridients() {
+		return ingridients;
+	}
+
+	public void setIngridients(String ingridients) {
+		this.ingridients = ingridients;
+	}
+
+	public String getSteps() {
+		return steps;
+	}
+
+	public void setSteps(String steps) {
+		this.steps = steps;
+	}
+
+	public Recipe(String recipeId, String recipeName, String ingridients, String steps, String userId) {
 		super();
 		this.recipeId = recipeId;
 		this.recipeName = recipeName;
+		this.ingridients = ingridients;
+		this.steps = steps;
 		this.userId = userId;
 	}
+
+	
 
 	
 	
