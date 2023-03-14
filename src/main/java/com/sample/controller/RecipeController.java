@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sample.model.Recipe;
+import com.sample.model.UserRecipe;
 import com.sample.service.RecipeService;
 
 @RestController
@@ -23,18 +24,15 @@ public class RecipeController {
 	private RecipeService recipeService;
 	
 	@PostMapping("/addRecipe")
-	public String addRecipe(@RequestBody Recipe recipe ) {
+	public UserRecipe addRecipe(@RequestBody Recipe recipe ) {
 		
-		if(recipeService.addRecipe(recipe) != null) {
-			return "This recipe is created successfully";
-		}else {
-			return "Somthing went wrong";
-		}
+		
+			return recipeService.addRecipe(recipe);
 		
 	}
 	
 	@GetMapping("/searchByName/{recipeName}")
-	public Recipe searchRecipe(@PathVariable String recipeName) {
+	public List<Recipe> searchRecipe(@PathVariable String recipeName) {
 		if(recipeService.getRecipeByName(recipeName) != null) {
 			return recipeService.getRecipeByName(recipeName);
 		}else {
@@ -43,7 +41,7 @@ public class RecipeController {
 	}
 	
 	@GetMapping("/getAll")
-	public List<Recipe> getAllRecipies(){
+	public List<UserRecipe> getAllRecipies(){
 		if(recipeService.getAllRecipe() != null) {
 			return recipeService.getAllRecipe();
 		}else {
