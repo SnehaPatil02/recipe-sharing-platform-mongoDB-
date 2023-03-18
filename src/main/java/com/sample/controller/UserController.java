@@ -53,7 +53,7 @@ public class UserController {
 	
 	@DeleteMapping("/deleteUser/{userId}")
 	public String deleteUserById(@PathVariable String userName) {
-		if(userService.deleteUserById(userName) == null) {
+		if(userService.deleteUserById(userName) != null) {
 			return "User is deleted successfully";
 		}else {
 			return "Something went wrong";

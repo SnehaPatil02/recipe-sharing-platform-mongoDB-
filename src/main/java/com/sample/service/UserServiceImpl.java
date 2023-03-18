@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public String deleteUserById(String userName) {
 		userRepository.deleteById(userName);
-		return null;
+		return "User is deleted successfully";
 	}
 
 }
