@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sample.model.Followers;
-import com.sample.model.User;
 import com.sample.model.UserFollowers;
 import com.sample.repository.FollowRepository;
 import com.sample.repository.UserRepository;
@@ -38,8 +37,6 @@ public class FollowServiceImpl implements FollowService{
 
 	@Override
 	public List<UserFollowers> getAllFollowers(String userId) {
-
-		
 				 List<Followers> allFollowers= followRepo.findAllByToUserId(userId);
 				 System.out.println(allFollowers.size());
 				 List<UserFollowers> userFollowers = new ArrayList<UserFollowers>();
@@ -56,10 +53,8 @@ public class FollowServiceImpl implements FollowService{
 	
 	@Override
 	public List<UserFollowers> getAllFollowing(String userId) {
-
-		
 				 List<Followers> allFollowers= followRepo.findAllByFromUserId(userId);
-				 System.out.println(allFollowers.size());
+			
 				 List<UserFollowers> userFollowers = new ArrayList<UserFollowers>();
 				 for(Followers follow : allFollowers) {
 					 UserFollowers uf = new UserFollowers();

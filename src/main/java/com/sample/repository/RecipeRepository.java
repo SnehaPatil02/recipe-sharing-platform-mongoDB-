@@ -15,6 +15,7 @@ public interface RecipeRepository extends MongoRepository<Recipe, String>{
 	@Query(value="{ 'recipeName' : {$regex : ?0, $options: '/i/'}}")
 	public List<Recipe> findByRecipeName(String recipeName);
 
+	public Recipe findByRecipeId(String recipeId);
 
 }
 
