@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sample.model.RecipeCollections;
+import com.sample.model.RecipeRating;
 import com.sample.model.UserCollectionsResponse;
 import com.sample.service.RecipeCollectionsService;
 
@@ -39,5 +40,24 @@ public class RecipeCollectionsController {
 		}else {
 		return null;
 	}
+	}
+	
+	@PostMapping("/rating/{userId}")
+	public String recipeRating(@RequestBody RecipeRating rating) {
+		
+		if(recipeCollectionsService.recipeRating(rating) != null ) {
+			return "Thank you for your feedback";
+		}else {
+			return "Please give ratings out of 5";
+		}
+	}
+	
+	@GetMapping("/getRatings/{recipeId}")
+	public List<RecipeRating> getRatings(@PathVariable String recipeId){
+		if(recipeCollectionsService.getRatings(recipeId) != null) {
+			return recipeCollectionsService.getRatings(recipeId);
+		}else {
+			return null;
+		}
 	}
 }
